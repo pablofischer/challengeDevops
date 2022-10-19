@@ -1,4 +1,9 @@
-
+data "aws_vpc" "vpc" {
+  filter {
+    name   = "tag:Name"
+    values = ["default"]
+  }
+}
 resource "aws_security_group" "sg" {
   name        = "Security Group"
   description = "Allow 8080"
@@ -21,6 +26,6 @@ resource "aws_security_group" "sg" {
   }
 
   tags = {
-    Name = "DevOpsChallenge"
+    Name = var.name
   }
 }
