@@ -1,5 +1,6 @@
 name: Docker and AWS
 on:
+  workflow_dispatch:
   push:
     branches: main
       
@@ -72,4 +73,24 @@ jobs:
         run: |
           cd terraform/
           terraform apply -auto-approve
+        continue-on-error: false
+        
+  DeployDocker:
+
+    name: Deploying Docker
+    runs-on: ubuntu-latest
+    steps:
+    
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_KEY }}
+          aws-region: us-east-1
+      
+      - name: Checkout Application
+        uses: actions/checkout@v3
+
+      - name: Wait
+        run: sleep 150s
         continue-on-error: false
