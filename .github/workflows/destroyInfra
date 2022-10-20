@@ -22,6 +22,7 @@ jobs:
   
         - name: Terraform Init and Plan
           run: |
+            id:init
             cd terraform/
             terraform init
           continue-on-error: false
