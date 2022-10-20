@@ -29,8 +29,8 @@ jobs:
           push: true
           tags: pablofischer/app-node:2.0
           
-  CreateInfra:
-    name: Create AWS Infra
+  AWSInfra:
+    name: AWS Infra
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Application
