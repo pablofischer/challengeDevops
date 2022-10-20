@@ -76,10 +76,17 @@ jobs:
         continue-on-error: false
         
   DeployDocker:
-    needs: [BuildDocker, AWSInfra]
+    needs: [BuildDocker, AWSInfra] #dentifica os trabalhos que precisam ser concluídos com êxito antes que este trabalho seja executado;
     name: Deploying Docker
     runs-on: ubuntu-latest
     steps:
+    
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.POC_AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.POC_AWS_SECRET_KEY }}
+          aws-region: us-east-1
       
       - name: Checkout Application
         uses: actions/checkout@v3
