@@ -22,7 +22,9 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
 
-      - name: Build And Push Docker Image
-        run: |
-          docker build -t ${DOCKER_REPO}/${IMAGE_NAME}:${IMAGE_TAG} .
-          docker image push ${DOCKER_REPO}/${IMAGE_NAME}:${IMAGE_TAG}
+      - name: Build and push
+        uses: docker/build-push-action@v3
+        with:
+          context: .
+          push: true
+          tags: pablofischer/app-node:2.0
