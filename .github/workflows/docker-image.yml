@@ -1,9 +1,8 @@
 name: Docker and AWS
 on:
-  workflow_dispatch:
   push:
     branches:
-      - "main"
+      - main
 jobs:
   BuildContainer:
     name: Build Container
