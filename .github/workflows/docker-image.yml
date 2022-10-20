@@ -1,4 +1,4 @@
-name: Deploy Docker and Ec2
+name: Docker and AWS
 on:
   workflow_dispatch:
   push:
