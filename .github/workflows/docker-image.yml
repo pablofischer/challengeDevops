@@ -1,77 +1,25 @@
 name: Docker and AWS
 on:
-  workflow_dispatch:
   push:
     branches:
       - main
-jobs:
-  BuildContainer:
-    name: Build Container
-    runs-on: ubuntu-latest
-    env:
-      DOCKER_REPO: pablofischer
-      IMAGE_NAME: app-node
-      IMAGE_TAG: 2.0
-    steps:
-      - name: Checkout Application
-        uses: actions/checkout@v3
-    
-      - name: Login to DockerHub
-        uses: docker/login-action@v2
-        with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_PASSWORD }}
-
-      - name: Build and push
-        uses: docker/build-push-action@v3
-        with:
-          context: .
-          push: true
-          tags: pablofischer/app-node:2.0
-          
-  AWSInfra:
-    name: AWS Infra
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Application
-        uses: actions/checkout@v3
-    
-      - name: Configure AWS Credentials
-        uses: aws-actions/configure-aws-credentials@v1
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_KEY }}
-          aws-region: us-east-1
-
-      - name: Setup Terraform
-        uses: hashicorp/setup-terraform@v1
-        with:
-          terraform_version: 0.13.5
-          
-      - name: Terraform Fmt
-        id: fmt
-        run: |
-          cd terraform/
-          terraform fmt
-        continue-on-error: false
-
-      - name: Terraform Init
-        id: init
-        run: |
-          cd terraform/
-          terraform init
-        continue-on-error: false
       
-      - name: Terraform Plan
-        id: plan
-        run: |
-          cd terraform/
-          terraform plan
-        continue-on-error: false
+jobs:
 
-      - name: Terraform Apply
-        id: apply
-        run: |
-          cd terraform/
-          terraform apply -auto-approve
-        continue-on-error: false
+  BuildDocker:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Docker Build
+      uses: docker/setup-buildx-action@v2.2.1
+      
+    - name: Docker Login
+  # You may pin to the exact commit or the version.
+  # uses: docker/login-action@f4ef78c080cd8ba55a85445d5b36e214a81df20a
+  uses: docker/login-action@v2.1.0
+  with:
+    username: ${{ secrets.DOCKERHUB_USERNAME }}
+    password: ${{ secrets.DOCKERHUB_PASSWORD }}
+
+
