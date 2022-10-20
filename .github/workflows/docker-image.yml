@@ -1,6 +1,7 @@
 name: Docker and AWS
 on:
-  workflow_call:
+  push:
+    branches: main
       
 jobs:
 
