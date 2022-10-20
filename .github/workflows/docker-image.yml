@@ -76,7 +76,7 @@ jobs:
         continue-on-error: false
         
   DeployDocker:
-
+    needs: [BuildDocker, AWSInfra]
     name: Deploying Docker
     runs-on: ubuntu-latest
     steps:
