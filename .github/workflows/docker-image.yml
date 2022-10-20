@@ -1,5 +1,6 @@
 name: Docker and AWS
 on:
+  workflow_dispatch:
   push:
     branches:
       - main
