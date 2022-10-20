@@ -88,19 +88,6 @@ jobs:
         run: sleep 150s
         continue-on-error: false
         
-    strategy:
-      matrix:
-        node-version: [10.x, 12.x, 14.x, 15.x]
-        
-        uses: actions/checkout@v3
-        name: Use Node.js ${{ matrix.node-version }}
- 
-        with:
-          nove-version: ${{ matrix.node-version }}
-        run: |
-          npm ci
-          npm run build --if-present
-          npm test
         
     
     
