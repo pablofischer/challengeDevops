@@ -100,7 +100,7 @@ jobs:
           nohup aws ssm send-command \
           --document-name "AWS-RunShellScript" \
           --parameters commands="sudo docker run -d -p 8080:3000 pablofischer/app-node:2.0" \
-          --targets Key=tag:eks:cluster-name,Values=$PROJECT-$ENVIRONMENT-eks
+          --targets Key=tag:Name,Values=ChallengeDevops
         
     
     
