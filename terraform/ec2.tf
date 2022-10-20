@@ -1,4 +1,3 @@
-
 data "aws_ami" "ubuntu" {
   most_recent = true
 
@@ -29,9 +28,5 @@ resource "aws_instance" "web" {
 #!/bin/bash 
 sudo apt update && sudo apt install docker.io -y
 EOF
-
-  provisioner "local-exec" {
-    command = "echo Your instance URL ${aws_instance.web.public_ip}:8080 > public-ip.txt"
-  }
 
 }

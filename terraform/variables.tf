@@ -1,6 +1,3 @@
-
-#variable key_name {}
-
 variable "name" {
   type        = string
   description = ""
