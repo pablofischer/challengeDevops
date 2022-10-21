@@ -101,6 +101,11 @@ jobs:
           --document-name "AWS-RunShellScript" \
           --parameters commands="sudo docker run -d -p 8080:3000 pablofischer/app-node:2.0" \
           --targets Key=tag:Name,Values=ChallengeDevops
+          
+      - name: URL
+        run: | 
+          cd terraform/
+          terraform init && terraform output
         
     
     
