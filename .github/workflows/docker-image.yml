@@ -107,10 +107,7 @@ jobs:
         with:
           terraform_version: 0.13.5
           
-      - name: URL
+      - name: EC2 IP
         run: | 
           cd terraform/
           terraform init && terraform output
-        
-    
-    
