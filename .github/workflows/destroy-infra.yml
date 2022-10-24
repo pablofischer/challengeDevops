@@ -6,7 +6,7 @@ on:
       
 jobs:
 
-  AWSInfra:
+  DestroyAWSInfra:
     name: AWS Infra
     runs-on: ubuntu-latest
     steps:
