@@ -4,6 +4,6 @@ This project aims to create a Docker Image, which will be stored in Docker Hub a
 
 You can trigger the Workflow by a push command or manually by GitHub Actions.
 
-After running, you can find the instance IP in "Docker and AWS" Workflow > (Job) Deploying Docker > (Step) EC2 IP
+After running, you can find the instance IP in Actions > "Docker and AWS" (Workflow) > Deploying Docker (Job) > EC2 IP (Step)
 
 Now to test if it's working, just open a Web Browser and put the <istante IP>:8080
