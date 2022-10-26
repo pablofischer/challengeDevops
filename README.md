@@ -8,4 +8,4 @@
 
 * ## Now to test if it's working, just open a Web Browser and put the (instance IP):8080
 
-## After running the docker-image.yml workflow, all the infrastructure can be destroyed by running manually destroy-infra.yml workflow.
+## After running the docker-image.yml workflow, all the infrastructure can be destroyed by running manually destroy-infra.yml workflow...
