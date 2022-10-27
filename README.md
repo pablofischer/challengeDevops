@@ -19,7 +19,7 @@ You can trigger the **workflow**:
 
 We have two workflows:
 * [docker-image.yml] - When a **push command** or a **manual GitHub Actions Workflow execution** are realized, it will:
-  * Build and push a docker image directly on repo pablofischer/app-node;
+  * Build and push a docker image directly on repo pablofischer/app-node
   * Run Terraform in the /terraform folder, initializing an EC2 Instance with AWS credentials;
   * Deploy to EC2 Instance the Docker container stored in Docker hub;
   * Show instance IP as output.
