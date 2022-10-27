@@ -27,7 +27,7 @@ jobs:
         context: .
         file: ./Dockerfile
         push: true
-        tags: pablofischer/app-node:2.1
+        tags: pablofischer/app-node:2.0
         
   AWSInfra:
     name: AWS Infra
@@ -100,7 +100,7 @@ jobs:
         run: |
           nohup aws ssm send-command \
           --document-name "AWS-RunShellScript" \
-          --parameters commands="sudo docker run -d -p 8080:3000 pablofischer/app-node:2.1" \
+          --parameters commands="sudo docker run -d -p 8080:3000 pablofischer/app-node:2.0" \
           --targets Key=tag:Name,Values=ChallengeDevops
           
       - name: Setup Terraform
