@@ -27,7 +27,7 @@ jobs:
         context: .
         file: ./Dockerfile
         push: true
-        tags: pablofischer/app-node:2.0
+        tags: pablofischer/app-node:2.1
         
   AWSInfra:
     name: AWS Infra
