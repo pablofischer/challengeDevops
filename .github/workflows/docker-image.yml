@@ -48,36 +48,17 @@ jobs:
         with:
           terraform_version: 0.13.5
           
-      - name: Terraform Fmt
-        id: fmt
-        run: |
-          cd terraform/
-          terraform fmt
-        continue-on-error: false
-
-      - name: Terraform Init
-        id: init
+      - name: Terraform Plan
+        id: Plan
         run: |
           cd terraform/
           terraform init
-        continue-on-error: false
-      
-      - name: Terraform Plan
-        id: plan
-        run: |
-          cd terraform/
           terraform plan
-        continue-on-error: false
-
-      - name: Terraform Apply
-        id: apply
-        run: |
-          cd terraform/
           terraform apply -auto-approve
         continue-on-error: false
         
   DeployDocker:
-    needs: [BuildDocker, AWSInfra] #identifica os trabalhos que precisam ser concluídos com êxito antes que este trabalho seja executado;
+    needs: [BuildDocker, AWSInfra] #identifies jobs that need to complete successfully before this job runs;
     name: Deploying Docker
     runs-on: ubuntu-latest
     steps:
